@@ -29,6 +29,7 @@ class NeuronParameters():
         N.peak=types.MethodType(peak,N)
         N.v_reset=types.MethodType(v_reset,N)
         N.u_reset=types.MethodType(u_reset,N)
+        return N
     
     def set_FS(self,N): #Fast Spiking
         N.C=20
@@ -50,6 +51,7 @@ class NeuronParameters():
             
         N.Uv=types.MethodType(Uv,N)
         N.dU=types.MethodType(dU,N)
+        return N
         
     def set_RS(self,N): #Regular Spiking
         N.C=100
@@ -61,7 +63,7 @@ class NeuronParameters():
         N.c=-50
         N.d=100
         N.vp=35
-        
+        return N        
     def set_CP(self,N): #Chattering Spiking
         N.C=50
         N.k=1.5
@@ -72,7 +74,7 @@ class NeuronParameters():
         N.c=-40
         N.d=150
         N.vp=25
-        
+        return N        
     def set_IB(self,N): #Intrinsically Bursting
         N.C=150
         N.k=1.2
@@ -83,4 +85,4 @@ class NeuronParameters():
         N.c=-56
         N.d=130
         N.vp=50
-        
+        return N        

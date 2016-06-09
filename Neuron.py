@@ -6,7 +6,7 @@ Created on Wed Jun  8 22:11:34 2016
 """
 
 class Neuron():
-    def __init__(self):
+    def __init__(self, dt = 1):
         self.k=.7
         self.vr=-60
         self.vt=-40
@@ -22,7 +22,8 @@ class Neuron():
         self.fired=False
         self.V=-50
         self.U=0
-        self.dt=1
+        self.dt=dt
+        self.T = int(1/self.dt)
         self.t=0
 #timestep phase        
     def updateI(self):
@@ -38,17 +39,17 @@ class Neuron():
     def timestep(self): #called externally (public function)
         self.fired=False
         self.updateI()
-        DV=self.dV()
-        DU=self.dU()
-        
-        self.V+=self.dt*DV
-        self.U+=self.dt*DU
-        
-        if self.V>=self.peak():
-            self.fired=True
-            self.v_reset()
-            self.u_reset()
-            
+
+        for t in range(self.T):
+            DV = self.dV()
+            DU = self.dU()
+            self.V+=self.dt*DV
+            self.U+=self.dt*DU
+            if self.V>=self.peak():
+                self.fired=True
+                self.v_reset()
+                self.u_reset()
+                
         self.reset_input()
         self.t+=1
             

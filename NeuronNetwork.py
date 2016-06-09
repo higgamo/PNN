@@ -28,7 +28,7 @@ w_inhibmax=-500
 d_excitmax=25
 d_inhibmax=10
 
-T=500
+T=800
 
 for n in range(n_excit):
     Net.add_node(n)
@@ -38,7 +38,7 @@ for n in range(n_excit):
 for n in range(n_excit,n_total):
     Net.add_node(n)
     Net.node[n]['model']=Neuron()
-    P.set_CP(Net.node[n]['model'])
+    P.set_LTS(Net.node[n]['model'])
     
 for n in Net.nodes():
     if n<n_excit:
