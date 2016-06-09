@@ -13,6 +13,6 @@ class NetworkGenerator():
         pass
     
     
-    def DirectedSmallWorld(self, N = 1000,k=10,p=0.01):
-        
+    def DirectedSmallWorld(self,Net, N = 1000,k=10,p=0.01):
+        Net.add_nodes_from(range(N))
         pass
